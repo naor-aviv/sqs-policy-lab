@@ -8,8 +8,10 @@ accountId = boto3.client('sts').get_caller_identity().get('Account')
 allowedArn = "arn:aws:::851725350401:*"
 
 # Define Bucket and log file
-logFile = input("Enter Log file name: ")
-bucketName = input("Enter Bucket name: ")
+# logFile = input("Enter Log file name: ")
+logFile = "sqs-logs.txt"
+bucketName = "python-task-01"
+# bucketName = input("Enter Bucket name: ")
 bucket = boto3.client('s3')
 
 
