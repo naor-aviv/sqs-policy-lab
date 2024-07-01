@@ -2,10 +2,11 @@ import boto3
 from botocore.exceptions import ClientError
 import json
 import logging
+import os
 
 # Get current account ID
 accountId = boto3.client('sts').get_caller_identity().get('Account')
-allowedArn = "arn:aws:::851725350401:*"
+allowedArn = f"arn:aws:::${accountId}:*"
 
 # Define Bucket and log file
 # logFile = input("Enter Log file name: ")

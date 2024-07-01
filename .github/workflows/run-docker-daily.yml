@@ -1,0 +1,25 @@
+name: Run Docker Container Daily
+
+on:
+  schedule:
+    - cron: '*/3 * * * *'  # Runs at 00:00 UTC every day
+
+jobs:
+  run-docker-container:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Pull Docker image
+        run: docker pull naoraviv13/sqs-policy-docker:latest
+
+      - name: Run Docker container
+        run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} naoraviv13/sqs-policy-docker:latest
