@@ -9,7 +9,7 @@ COPY main.py .
 
 # Install any dependencies your script requires
 # Example: RUN pip install -r requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install boto3
 
 # Run the Python script when the container launches
 CMD ["python", "main.py"]
