@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - security-test
   # schedule:
   #   - cron: '*/5 * * * *'  # Runs at 00:00 UTC every day
 

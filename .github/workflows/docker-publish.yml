@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - security-test
 
 jobs:
   build-and-publish:
