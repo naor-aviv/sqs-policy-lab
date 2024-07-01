@@ -4,6 +4,7 @@ import json
 import logging
 import os
 
+os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
 # Get current account ID
 accountId = boto3.client('sts').get_caller_identity().get('Account')
 allowedArn = f"arn:aws:::${accountId}:*"

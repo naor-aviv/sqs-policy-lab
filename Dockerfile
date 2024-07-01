@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the Python script into the container
 COPY main.py .
 
-# Install any dependencies your script requires
+# Install any dependencies you script requires
 # Example: RUN pip install -r requirements.txt
 RUN pip install boto3
 
