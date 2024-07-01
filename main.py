@@ -96,7 +96,8 @@ for region in regions:
           logs.write(sqsName + '\n')
 
 try:
-    logging.info('Trying to upload file to bucket')
+    print("Trying to upload file to bucket..")
     response = bucket.upload_file(logFile, bucketName, logFile)
+    print(f"Uploaded Log file to {bucketName} successfully!")
 except ClientError as e:
     logging.error(e)
