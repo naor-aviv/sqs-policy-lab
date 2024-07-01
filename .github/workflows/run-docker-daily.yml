@@ -26,4 +26,4 @@ jobs:
         run: docker pull naoraviv13/sqs-policy-docker:latest
 
       - name: Run Docker container
-        run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} naoraviv13/sqs-policy-docker:latest
+        run: docker run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} -e AWS_DEFAULT_REGION=us-east-1 naoraviv13/sqs-policy-docker:latest
