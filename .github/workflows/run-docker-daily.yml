@@ -1,8 +1,12 @@
 name: Run Docker Container Daily
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'  # Runs at 00:00 UTC every day
+  push:
+    branches:
+      - master
+      - main
+  # schedule:
+  #   - cron: '*/5 * * * *'  # Runs at 00:00 UTC every day
 
 jobs:
   run-docker-container:
@@ -10,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
