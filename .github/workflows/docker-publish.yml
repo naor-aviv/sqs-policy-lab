@@ -37,6 +37,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: naoraviv13/sqs-policy-docker:latest
+          format: json
 
       - name: Push Docker image to Docker Hub
         run: docker push naoraviv13/sqs-policy-docker:latest
