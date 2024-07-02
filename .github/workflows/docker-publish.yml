@@ -6,9 +6,13 @@ on:
       - master
       - main
       - security-test
+  pull_request:
+    branches:
+      - main
+      - security-test
 
 jobs:
-  build-and-publish:
+  build-and-scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,8 +24,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Download Bandit tool for code scanning
+        run: pip install bandit
+
       - name: Scan code with bandit
-        run: pip install bandit ; bandit -r .
+        run: bandit -r .
       
       - name: Build the Docker image
         run: docker build -t naoraviv13/sqs-policy-docker:latest .
